@@ -23,10 +23,18 @@ def handle_events():
             item_mode_active = not item_mode_active
             return
 
-        if item_mode_active:
-            continue
+        if item_mode_active and event.type == SDL_KEYDOWN:
+            if event.key == SDLK_0:
+                boy.ball_size = 0
+                continue
+            elif event.key == SDLK_1:
+                boy.ball_size = 21
+                continue
+            elif event.key == SDLK_2:
+                boy.ball_size = 41
+                continue
 
-        elif event.type == SDL_KEYDOWN and event.key == SDLK_p:
+        if event.type == SDL_KEYDOWN and event.key == SDLK_p:
             import pause_mode
             game_framework.push_mode(pause_mode)
             return
